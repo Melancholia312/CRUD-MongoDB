@@ -1,8 +1,9 @@
 package com.melancholia.educationplatform.user;
 
 import com.melancholia.educationplatform.user.permissions.Privilege;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -22,13 +23,17 @@ public class User implements UserDetails {
     @Id
     private String id;
 
+    @Size(max=40)
     @NotBlank
     @Indexed
     private String username;
+    
+    @Email
     @NotBlank
     @Indexed
     private String email;
-
+    
+    @Size(max=120)
     private String password;
 
     private String phone;
